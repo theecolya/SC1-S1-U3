@@ -1,8 +1,17 @@
 import React from 'react'
 
 export default class AppClass extends React.Component {
+
+  constructor() {
+      super();
+      this.state = {
+
+      }
+    }
+    
   render() {
-    const { className } = this.props
+    const { className } = this.props;
+
     return (
       <div id="wrapper" className={className}>
         <div className="info">
