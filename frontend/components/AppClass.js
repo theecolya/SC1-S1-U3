@@ -111,9 +111,23 @@ export default class AppClass extends React.Component {
       email: e.target[0].value
     })
     .then((res) => {const winMessage = res.data.message;
-    this.setState({...this.state, message: winMessage})})
-    .catch((err) => {const errMessage = err.response.data.message
-    this.setState({...this.state, message: errMessage})})
+      this.setState({x: 2,
+                y: 2,
+                steps: 0,
+                grid: [false, false, false,
+                      false, false, false,
+                      false, false, false],
+                message: winMessage,
+                currentIdx: 4})})
+      .catch((err) => {const errMessage = err.response.data.message
+      this.setState({x: 2,
+                y: 2,
+                steps: 0,
+                grid: [false, false, false,
+                      false, false, false,
+                      false, false, false],
+                message: errMessage,
+                currentIdx: 4})})
     
   }
 
