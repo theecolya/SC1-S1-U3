@@ -107,16 +107,16 @@ export default function AppFunctional(props) {
       email: e.target[0].value
     })
     .then((res) => {const winMessage = res.data.message;
-      this.setState({...this.state, message: winMessage})})
+      setState({...state, message: winMessage})})
       .catch((err) => {const errMessage = err.response.data.message
-      this.setState({...this.state, message: errMessage})})
+      setState({...state, message: errMessage})})
   }
 
     return (
       <div id="wrapper" className={props.className}>
         <div className="info">
           <h3 id="coordinates">Coordinates ({state.x}, {state.y})</h3>
-          <h3 id="steps">You moved {state.steps} times</h3>
+          <h3 id="steps">{state.steps === 1 ? `You moved ${state.steps} time` : `You moved ${state.steps} times`}</h3>
         </div>
         <div id="grid">
           {state.grid.map((item, index) => {
