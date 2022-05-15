@@ -127,8 +127,7 @@ export default class AppClass extends React.Component {
                       false, false, false,
                       false, false, false],
                 message: errMessage,
-                currentIdx: 4})})
-    
+                currentIdx: 4})});
   }
 
   render() {
