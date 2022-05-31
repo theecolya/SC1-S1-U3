@@ -13,6 +13,7 @@ export default class AppClass extends React.Component {
                false, true, false,
                false, false, false],
         message: "",
+        email: "",
         currentIdx: 4
       }
     }
@@ -98,6 +99,7 @@ export default class AppClass extends React.Component {
             false, false, false,
             false, false, false],
       message: "",
+      email: "",
       currentIdx: 4
     })
   }
@@ -108,7 +110,7 @@ export default class AppClass extends React.Component {
       x: this.state.x,
       y: this.state.y,
       steps: this.state.steps,
-      email: e.target[0].value
+      email: this.state.email
     })
     .then((res) => {const winMessage = res.data.message;
       this.setState({x: 2,
@@ -118,6 +120,7 @@ export default class AppClass extends React.Component {
                       false, false, false,
                       false, false, false],
                 message: winMessage,
+                email: "",
                 currentIdx: 4})})
       .catch((err) => {const errMessage = err.response.data.message
       this.setState({x: 2,
@@ -128,6 +131,13 @@ export default class AppClass extends React.Component {
                       false, false, false],
                 message: errMessage,
                 currentIdx: 4})});
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      email: e.target.value
+    })
   }
 
   render() {
@@ -155,7 +165,7 @@ export default class AppClass extends React.Component {
           <button onClick={this.handleReset} id="reset">reset</button>
         </div>
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <input id="email" type="email" placeholder="type email"></input>
+          <input onChange={this.handleChange} id="email" type="email" placeholder="type email" value={this.state.email}></input>
           <input id="submit" type="submit"></input>
         </form>
       </div>

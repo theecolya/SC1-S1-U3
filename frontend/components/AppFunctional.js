@@ -11,6 +11,7 @@ export default function AppFunctional(props) {
                false, true, false,
                false, false, false],
         message: "",
+        email: "",
         currentIdx: 4})
   
   const handleMove = (e) => {
@@ -94,6 +95,7 @@ export default function AppFunctional(props) {
             false, false, false,
             false, false, false],
       message: "",
+      email: "",
       currentIdx: 4
     })
   }
@@ -104,7 +106,7 @@ export default function AppFunctional(props) {
       x: state.x,
       y: state.y,
       steps: state.steps,
-      email: e.target[0].value
+      email: state.email
     })
     .then((res) => {const winMessage = res.data.message;
       setState({x: 2,
@@ -114,6 +116,7 @@ export default function AppFunctional(props) {
                       false, false, false,
                       false, false, false],
                 message: winMessage,
+                email: "",
                 currentIdx: 4})})
       .catch((err) => {const errMessage = err.response.data.message
       setState({x: 2,
@@ -124,6 +127,13 @@ export default function AppFunctional(props) {
                       false, false, false],
                 message: errMessage,
                 currentIdx: 4})})
+  }
+
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      email: e.target.value
+    })
   }
 
     return (
@@ -148,7 +158,7 @@ export default function AppFunctional(props) {
           <button onClick={handleReset} id="reset">reset</button>
         </div>
         <form onSubmit={(e) => handleSubmit(e)}>
-          <input id="email" type="email" placeholder="type email"></input>
+          <input onChange={handleChange} id="email" type="email" placeholder="type email" value={state.email}></input>
           <input id="submit" type="submit"></input>
         </form>
       </div>
