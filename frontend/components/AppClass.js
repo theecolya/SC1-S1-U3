@@ -113,9 +113,9 @@ export default class AppClass extends React.Component {
       email: this.state.email
     })
     .then((res) => {const winMessage = res.data.message;
-      this.setState({x: 2,
-                y: 2,
-                steps: 0,
+      this.setState({
+                
+                ...this.state,
                 grid: [false, false, false,
                       false, false, false,
                       false, false, false],

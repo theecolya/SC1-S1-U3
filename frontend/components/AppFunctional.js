@@ -109,9 +109,7 @@ export default function AppFunctional(props) {
       email: state.email
     })
     .then((res) => {const winMessage = res.data.message;
-      setState({x: 2,
-                y: 2,
-                steps: 0,
+      setState({...state,
                 grid: [false, false, false,
                       false, false, false,
                       false, false, false],
